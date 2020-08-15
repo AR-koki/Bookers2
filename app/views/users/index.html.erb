@@ -1,0 +1,46 @@
+<div class='container'>
+  <div class='row'>
+  </div>
+  <div class='row'>
+    <div class="col-lg-4">
+      <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+      <div>
+        <p>name</p>
+        <p><%= current_user.name %></p>
+      </div>
+      <div>
+        <p>introduction</p>
+      </div>
+      <a href="#">設定</a>
+      <!-- NEW BOOK -->
+      <h2>New book</h2>
+        <p>title</p>
+        <p>opinion</p>
+        <a href="" title="Create Book"></a>
+      <!-- ここまで -->
+    </div>
+    <div class="col-lg-8">
+      <h2>Users</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= image_tag('no_image.jpg') %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", "users/#{user.id}" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
