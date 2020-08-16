@@ -6,7 +6,7 @@
 
         <ul>
           <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %>
+            <li><%= message %></li>
           <% end %>
         </ul>
       </div>
@@ -15,15 +15,16 @@
   <div class='row'>
     <div class="col-lg-4">
       <h2>User info</h2>
-      <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+      <%= attachment_image_tag current_user, :profile_image, format: 'jpeg', size: "100x100" %>
       <div>
         <p>name</p>
         <p><%= current_user.name %></p>
       </div>
       <div>
         <p>introduction</p>
+        <%= current_user.introduction %>
       </div>
-      <a href="#">設定</a>
+      <%= link_to "プロフィール編集", edit_user_path(current_user.id) %>
       <!-- NEW BOOK -->
       <h2>New book</h2>
       <%= form_for(@book) do |f| %>

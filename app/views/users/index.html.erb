@@ -4,20 +4,25 @@
   <div class='row'>
     <div class="col-lg-4">
       <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+        <%= attachment_image_tag current_user, :profile_image, format: 'jpeg', size: "100x100" %>
       <div>
         <p>name</p>
         <p><%= current_user.name %></p>
       </div>
       <div>
         <p>introduction</p>
+        <%= current_user.introduction %>
       </div>
-      <a href="#">設定</a>
+      <%= link_to "プロフィール編集", edit_user_path(current_user.id) %>
       <!-- NEW BOOK -->
       <h2>New book</h2>
+      <%= form_for(@book) do |f| %>
         <p>title</p>
+        <%= f.text_field :title %>
         <p>opinion</p>
-        <a href="" title="Create Book"></a>
+        <%= f.text_area :body %>
+        <%= f.submit 'Create Book' %>
+      <% end %>
       <!-- ここまで -->
     </div>
     <div class="col-lg-8">
@@ -34,7 +39,7 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= image_tag('no_image.jpg') %></td>
+              <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "100x100" %></td>
               <td><%= user.name %></td>
               <td><%= link_to "Show", "users/#{user.id}" %></td>
             </tr>
