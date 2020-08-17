@@ -1,4 +1,9 @@
 <div class='container'>
+  <div class="row">
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+  </div>
   <div class='row'>
   </div>
   <div class='row'>
@@ -7,7 +12,7 @@
       <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
       <div>
         <p>name</p>
-        <p><%= current_user.name %></p>
+        <p><%= @user.name %></p>
       </div>
       <div>
         <p>introduction</p>
