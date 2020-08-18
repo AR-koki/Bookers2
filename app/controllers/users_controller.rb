@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 	before_action :correct_user, only: [:edit]
 
   def index
@@ -39,6 +40,10 @@ class UsersController < ApplicationController
   private
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
   def correct_user

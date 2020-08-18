@@ -1,25 +1,26 @@
-<h2>User info</h2>
-<% if @user.errors.any? %>
-	<div id="error_explanation">
-	<h2><%= pluralize(@user.errors.count, "error") %> errors prohibited this obj from being saved:</h2>
-	<ul>
-	  <% @user.errors.full_messages.each do |message| %>
-	    <li><%= message %></li>
-	  <% end %>
-	</ul>
+<div class="container">
+	<div class="row">
+		<h2>User info</h2>
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+			<h2><%= pluralize(@user.errors.count, "error") %> errors prohibited this obj from being saved:</h2>
+			<ul>
+			  <% @user.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+			</ul>
+			</div>
+		<% end %>
+		<%= form_for(@user) do |f| %>
+			<p>Name</p>
+			<%= f.text_field :name %>
+			<div class="form-group has-icon">
+				<p>image</p>
+		  		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+			</div>
+			<p>introduction</p>
+			<%= f.text_area :introduction %><br />
+			<%= f.submit "Update User" %>
+		<% end %>
 	</div>
-<% end %>
-<%= form_for(@user) do |f| %>
-	<p>Name</p>
-	<%= f.text_field :name %>
-	<div class="form-group has-icon">
-		<label class="control-label sr-only" for="inputEmail">Image</label>
-  		<div class="user-edit-image">
-    		<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-  		</div>
-  		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
-	</div>
-	<p>introduction</p>
-	<%= f.text_area :introduction %><br />
-	<%= f.submit "Update User" %>
-<% end %>
+</div>

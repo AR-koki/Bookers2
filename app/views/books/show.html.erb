@@ -1,49 +1,69 @@
-<div class="row">
-	<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
-	<% end %>
-</div>
-<div class="row">
-	<div class="col-lg-4">
-      <h2>User info</h2>
-      <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-      <div>
-        <p>name</p>
-        <p><%= @users.name %></p>
+<div class="container">
+  <div class="row">
+  	<% if flash[:notice] %>
+  		<p><%= flash[:notice] %></p>
+  	<% end %>
+  </div>
+  <div class="row">
+  	<div class="col-xs-3">
+        <div class='row'>
+          <h2>User info</h2>
+          <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
+        </div>
+        <div class='row'>
+          <div class='name'>
+            <div class='col-lg-6'>name</div>
+            <div class='col-lg-6'><%= @users.name %></div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='introduction'>
+            <p>introduction</p>
+          </div>
+          <p><%= @users.introduction %></p>
+          <% if @users.id == current_user.id %>
+            <%= link_to "プロフィール編集", edit_user_path(@users), class: "btn btn-default w-100" %>
+          <% else %>
+            <%= link_to "プロフィール編集", user_path(current_user), class: "btn btn-default w-100" %>
+          <% end %>
+        </div>
+        <!-- NEW BOOK -->
+        <div class="row">
+          <h2>New book</h2>
+          <%= form_for(@book) do |f| %>
+          <div class="text_box">
+            <h5>Title</h5>
+            <%= f.text_field :title, class: "text" %>
+            <h5>Opinion</h5>
+            <%= f.text_area :body, class: "text" %>
+            <%= f.submit 'Create Book', class: "btn btn-primary" %>
+          </div>
+          <% end %>
+        </div>
+        <!-- ここまで -->
       </div>
-      <div>
-        <p>introduction</p>
-        <p><%= @users.introduction %></p>
+      <div class="col-xs-9">
+        <h2>Book detail</h2>
+        <div class="row">
+          <div class="mybook">
+          	<% if @book.user_id == current_user.id %>
+    	    		<div class="col-lg-3"><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+    	    		<div class="col-lg-2"><%= @book.title %></div>
+    	    		<div class="col-lg-2"><%= @book.body %></div>
+    	    		<div class="col-lg-2"><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %></div>
+    	    		<div class="col-lg-2"><%= link_to "Destroy", "/books/#{@book.id}", method: :delete ,class: "btn btn-danger" %></div>
+      	    <% else %>
+    	    		<div class="col-lg-4"><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+    	    		<div class="col-lg-4"><%= @book.title %></div>
+    	    		<div class="col-lg-4"><%= @book.body %></div>
+      	    <% end %>
+          </div>
+          <div class="row w-100" ></div>
+          <div class="row">
+            <div class="user_name">
+              <%= @book.user.name %></div>
+            </div>
+        </div>
       </div>
-      <% if @users.id == current_user.id %>
-          <p><%= link_to "プロフィール編集", edit_user_path(@users) %></p>
-      <% end %>
-      <!-- NEW BOOK -->
-      <h2>New book</h2>
-      <%= form_for(@book) do |f| %>
-        <p>title</p>
-        <%= f.text_field :title %>
-        <p>opinion</p>
-        <%= f.text_area :body %>
-        <%= f.submit 'Create Book' %>
-      <% end %>
-      <!-- ここまで -->
-    </div>
-    <div class="col-lg-8">
-    	<% if @book.user_id == current_user.id %>
-	    	<tr>
-	    		<td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
-	    		<td><%= @book.title %></td>
-	    		<td><%= @book.body %></td>
-	    		<td><%= link_to "Edit", edit_book_path(@book) %></td>
-	    		<td><%= link_to "Destroy", "/books/#{@book.id}", method: :delete %></td>
-	    	</tr>
-	    <% else %>
-	    	<tr>
-	    		<td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
-	    		<td><%= @book.title %></td>
-	    		<td><%= @book.body %></td>
-	    	</tr>
-	    <% end %>
     </div>
 </div>

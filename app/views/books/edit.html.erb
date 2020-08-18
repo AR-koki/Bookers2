@@ -1,34 +1,41 @@
 <div class="container">
-	<h2 class="row">Editing Book</div>
-	<div class="row center-block">
-		<%= form_for(@book) do |f| %>
-			<% if @book.errors.any? %>
-				<div id="error_explanation">
-					<h2><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h2>
-
-					<ul>
-						<% @book.errors.full_messages.each do |message| %>
-							<li><%= message %></li>
-						<% end %>
-					</ul>
-				</div>
-				<div>
-					<p>Title</p>
-					<%= f.text_field :title %>
-					<p>Opinion</p>
-					<%= f.text_area :body %>
-				</div>
-				<%= f.submit 'Update Book' %>
-			<% else %>
-				<div>
-					<p>Title</p>
-					<%= f.text_field :title %>
-					<p>Opinion</p>
-					<%= f.text_area :body %>
-				</div>
-				<%= f.submit 'Update Book' %>
+	<div class="row text-center"><h2>Editing Book</h2></div>
+	<div class="row">
+		<div class=edit_book>
+			<%= form_for(@book) do |f| %>
+				<% if @book.errors.any? %>
+					<div id="error_explanation">
+						<div class="row"><h3><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h3></div>
+						<div class=row>
+							<ul>
+								<% @book.errors.full_messages.each do |message| %>
+									<li><%= message %></li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div><p>Title</p></div>
+						<%= f.text_field :title, class: "text" %>
+						<div><p>Opinion</p></div>
+						<%= f.text_area :body, class: "text" %>
+					</div>
+					<div class="row">
+						<%= f.submit 'Update Book', class: "btn btn-primary" %>
+					</div>
+				<% else %>
+					<div class="row">
+						<div><p>Title</p></div>
+						<%= f.text_field :title, class: "text" %>
+						<div><p>Opinion</p></div>
+						<%= f.text_area :body, class: "text" %>
+					</div>
+					<div class="row">
+						<%= f.submit 'Update Book', class: "btn btn-primary" %>
+					</div>
+				<% end %>
 			<% end %>
-		<% end %>
-		<%= link_to "show","/books/#{@book.id}" %><span>|</span><%= link_to "Back", "/books" %>
+			<%= link_to "Show","/books/#{@book.id}" %><span>|</span><%= link_to "Back", "/books" %>
+		</div>
 	</div>
 </div>

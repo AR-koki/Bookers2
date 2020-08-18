@@ -1,1 +1,38 @@
-
+.header {
+	background-color: #222222;
+	color: white;
+}
+.menu {
+	color: white;
+}
+.head {
+	width:  50%;
+	margin: 0 auto;
+}
+.box {
+	width: 50%;
+	margin: 0 auto;
+}
+.btn {
+	width: 50%;
+}
+.user_name {
+	padding-left: 50px;
+}
+.danger {
+	width: 10%;
+}
+.edit_book {
+	width: 500px;
+	margin: 0 auto;
+}
+.edit_title {
+	width: 500px;
+}
+.text_box {
+	width: 300px;
+}
+.list-unstyled {
+	margin: 0 auto;
+	width: 500px;
+}
