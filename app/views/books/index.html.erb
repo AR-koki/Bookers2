@@ -16,7 +16,7 @@
     <div class="col-xs-3">
       <div class='row'>
         <h2>User info</h2>
-        <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
+          <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
       </div>
       <div class='row'>
         <div class='name'>
@@ -29,7 +29,7 @@
           <p>introduction</p>
         </div>
         <p><%= current_user.introduction %></p>
-          <%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-default w-100" %>
+            <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default w-100" %>
       </div>
       <!-- NEW BOOK -->
       <h2>New book</h2>
@@ -59,7 +59,11 @@
         <% @books.each do |book| %>
           <div class="row">
             <div class="mybook">
-              <div class="col-lg-4"><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+              <div class="col-lg-4">
+                <%= link_to user_path(book.user.id) do %>
+                  <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
+                <% end %>
+              </div>
               <div class="col-lg-4"><%= link_to book.title, "/books/#{book.id}" %></div>
               <div class="col-lg-4"><%= book.body %></div>
             </div>

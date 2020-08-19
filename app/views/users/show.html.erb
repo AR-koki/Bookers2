@@ -23,9 +23,7 @@
           <p>introduction</p>
         </div>
         <p><%= @user.introduction %></p>
-        <% if @user.id == current_user.id %>
           <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default w-100" %>
-        <% end %>
       </div>
       <!-- NEW BOOK -->
       <h2>New book</h2>

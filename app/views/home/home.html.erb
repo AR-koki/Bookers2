@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+	  	<% if flash[:notice] %>
+	  		<p><%= flash[:notice] %></p>
+	  	<% end %>
+  	</div>
+	<div class="row">
+		<div class="head">
+			<h2 class="text-left">welcome to Bookers!!</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="head">
+			<p class="text-left">in Bookers,</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="box">
+			<p class="text-left">
+				you can share and exchange your opinions , inpressions , and emotions<br>
+				about various books!
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<ul class="list-unstyled">
+			<li class="text-center">
+				<%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+			</li>
+			<li class="text-center">
+				<%= link_to "Sign up", new_user_registration_path,class: "btn btn-success" %>
+			</li>
+		</ul>
+	</div>
+</div>

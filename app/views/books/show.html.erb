@@ -21,11 +21,7 @@
             <p>introduction</p>
           </div>
           <p><%= @users.introduction %></p>
-          <% if @users.id == current_user.id %>
             <%= link_to "プロフィール編集", edit_user_path(@users), class: "btn btn-default w-100" %>
-          <% else %>
-            <%= link_to "プロフィール編集", user_path(current_user), class: "btn btn-default w-100" %>
-          <% end %>
         </div>
         <!-- NEW BOOK -->
         <div class="row">
@@ -47,21 +43,27 @@
         <div class="row">
           <div class="mybook">
           	<% if @book.user_id == current_user.id %>
-    	    		<div class="col-lg-3"><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
-    	    		<div class="col-lg-2"><%= @book.title %></div>
+    	    		<div class="col-lg-3">
+                <%= link_to user_path(@book.user.id) do %>
+                  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+                <% end %>
+    	    		<div class="col-lg-2"><%= link_to @book.title, book_path(@book.id) %></div>
     	    		<div class="col-lg-2"><%= @book.body %></div>
     	    		<div class="col-lg-2"><%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %></div>
     	    		<div class="col-lg-2"><%= link_to "Destroy", "/books/#{@book.id}", method: :delete ,class: "btn btn-danger" %></div>
       	    <% else %>
-    	    		<div class="col-lg-4"><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
-    	    		<div class="col-lg-4"><%= @book.title %></div>
+    	    		<div class="col-lg-4">
+                <%= link_to user_path(@book.user.id) do %>
+                  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+                <% end %>
+    	    		<div class="col-lg-4"><%= link_to @book.title, book_path(@book.id) %></div>
     	    		<div class="col-lg-4"><%= @book.body %></div>
       	    <% end %>
           </div>
           <div class="row w-100" ></div>
           <div class="row">
             <div class="user_name">
-              <%= @book.user.name %></div>
+              <%= link_to @book.user.name,user_path(@book.user.id)  %></div>
             </div>
         </div>
       </div>
