@@ -5,39 +5,7 @@
   	<% end %>
   </div>
   <div class="row">
-  	<div class="col-xs-3">
-        <div class='row'>
-          <h2>User info</h2>
-          <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
-        </div>
-        <div class='row'>
-          <div class='name'>
-            <div class='col-lg-6'>name</div>
-            <div class='col-lg-6'><%= @users.name %></div>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='introduction'>
-            <p>introduction</p>
-          </div>
-          <p><%= @users.introduction %></p>
-            <%= link_to "プロフィール編集", edit_user_path(@users), class: "btn btn-default w-100" %>
-        </div>
-        <!-- NEW BOOK -->
-        <div class="row">
-          <h2>New book</h2>
-          <%= form_for(@book) do |f| %>
-          <div class="text_box">
-            <h5>Title</h5>
-            <%= f.text_field :title, class: "text" %>
-            <h5>Opinion</h5>
-            <%= f.text_area :body, class: "text" %>
-            <%= f.submit 'Create Book', class: "btn btn-primary" %>
-          </div>
-          <% end %>
-        </div>
-        <!-- ここまで -->
-      </div>
+  	<%= render 'books/user', user: @user, book: @book %>
       <div class="col-xs-9">
         <h2>Book detail</h2>
         <div class="row">

@@ -36,3 +36,9 @@
 	margin: 0 auto;
 	width: 500px;
 }
+.list {
+	color: white;
+}
+.glyphicon-home {
+	display: inline-block;
+}
