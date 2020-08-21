@@ -21,7 +21,7 @@
         <% @books.each do |book| %>
           <div class="row">
             <div class="mybook">
-              <div class="col-lg-4"><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+              <div class="col-lg-4"><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg",size:'40x40' %></div>
               <div class="col-lg-4"><%= link_to book.title, "/books/#{book.id}" %></div>
               <div class="col-lg-4"><%= book.body %></div>
             </div>
@@ -30,4 +30,5 @@
       </div>
     </div>
   </div>
+  <p class="text-right">CopyRight Infratop.inc</p>
 </div>

@@ -1,5 +1,4 @@
-.header {
-	background-color: #222222;
+nav:hover {
 	color: white;
 }
 .menu {
@@ -35,10 +34,4 @@
 .list-unstyled {
 	margin: 0 auto;
 	width: 500px;
-}
-.list {
-	color: white;
-}
-.glyphicon-home {
-	display: inline-block;
 }

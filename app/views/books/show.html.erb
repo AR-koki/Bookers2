@@ -13,7 +13,7 @@
           	<% if @book.user_id == current_user.id %>
     	    		<div class="col-lg-3">
                 <%= link_to user_path(@book.user.id) do %>
-                  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+                  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg",size:'40x40' %></div>
                 <% end %>
     	    		<div class="col-lg-2"><%= link_to @book.title, book_path(@book.id) %></div>
     	    		<div class="col-lg-2"><%= @book.body %></div>
@@ -22,7 +22,7 @@
       	    <% else %>
     	    		<div class="col-lg-4">
                 <%= link_to user_path(@book.user.id) do %>
-                  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+                  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg",size:'40x40' %></div>
                 <% end %>
     	    		<div class="col-lg-4"><%= link_to @book.title, book_path(@book.id) %></div>
     	    		<div class="col-lg-4"><%= @book.body %></div>
@@ -36,4 +36,5 @@
         </div>
       </div>
     </div>
+    <p class="text-right">CopyRight Infratop.inc</p>
 </div>
