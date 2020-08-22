@@ -16,3 +16,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.navbar .nav > li > a:hover {
+	color: white;
+}
