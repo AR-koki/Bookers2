@@ -12,18 +12,22 @@
       <h2>Books</h2>
       <div class="row" style="padding-left: 15px;">
         <div>
-          <div class="col-lg-4"></div>
+          <div class="col-lg-2"></div>
           <div class="col-lg-4">Title</div>
           <div class="col-lg-4">Opinion</div>
+          <div class="col-lg-2"></div>
         </div>
       </div>
       <div class="row">
         <% @books.each do |book| %>
           <div class="row">
             <div class="mybook">
-              <div class="col-lg-4"><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg",size:'40x40' %></div>
+              <div class="col-lg-2"><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg",size:'40x40' %></div>
               <div class="col-lg-4"><%= link_to book.title, "/books/#{book.id}" %></div>
               <div class="col-lg-4"><%= book.body %></div>
+              <div class="col-lg-2">
+                <p>コメント件数:<%= book.book_comments.count %></p>
+              </div>
             </div>
           </div>
         <% end %>

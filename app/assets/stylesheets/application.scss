@@ -15,7 +15,8 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 .navbar .nav > li > a:hover {
 	color: white;
 }
