@@ -18,10 +18,33 @@
         <p><%= current_user.introduction %></p>
       </div>
     </div>
-        <%= link_to edit_user_path(user.id), class: "btn btn-default" do%>
-          <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
-        <% end %>
   </div>
+  <div class='row'>
+    <div class="follows">
+      <div class="col-xs-5">
+        <p>follows</p>
+      </div>
+      <div class="col-xs-7" style="padding-bottom: 15px;">
+        <p><%= link_to @user.followings.count, follows_user_path(user) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="followers">
+      <div class="col-xs-5">
+        <p>followers</p>
+      </div>
+      <div class="col-xs-7" style="padding-bottom: 15px;">
+        <p><%= link_to @user.followers.count, followers_user_path(user) %></p>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div>follow</div>
+  </div>
+  <%= link_to edit_user_path(user.id), class: "btn btn-default" do%>
+      <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+  <% end %>
   <!-- NEW BOOK -->
   <h2>New book</h2>
   <%= form_for(book) do |f| %>

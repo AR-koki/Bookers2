@@ -6,6 +6,11 @@
   </div>
   <div class="row">
   	<%= render 'books/user', user: @user, book: @book_new %>
+    <% if current_user.following?(user) %>
+        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+      <% else %>
+        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+      <% end %>
     <div class="col-xs-9">
       <h2>Book detail</h2>
       <div class="row">

@@ -1,0 +1,16 @@
+<div class="container">
+	<h2>Follower Users</h2>
+	<div class="row">
+		<% @users.each do |user| %>
+			<div class="row">
+				<div class="col-lg-2">
+					<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %>
+				</div>
+				<div class="col-lg-2"><%= user.name %></div>
+				<div class="col-lg-3">フォロー数:<%= user.followings.count %></div>
+				<div class="col-lg-3">フォロワー数:<%= user.followers.count %></div>
+				<div class="col-lg-2"><%= link_to '詳細', user_path(user.id) %></div>
+			</div>
+		<% end %>
+	</div>
+</div>
