@@ -9,7 +9,6 @@
   </head>
 
   <body>
-
     <div class="header" id="header">
       <nav class="navbar navbar-main navbar-default" role="navigation" id="slide-nav" style="background-color: #222222; border-color: #222222; border-radius: 0px;">
         <div class="container relative">
@@ -68,7 +67,7 @@
         </div>
       </nav>
     </div>
-
-    <%= yield %>
+    <%= render 'searches/search' %>
+      <%= yield %>
   </body>
 </html>
